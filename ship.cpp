@@ -13,7 +13,7 @@
 
 Ship::Ship(int size)
 {
-  if(size > 5 || size < 0)
+  if(m_size > 5 || m_size < 0)
   {
     throw(std::runtime_error("Ships must be of size 1-5\n"));
   }
