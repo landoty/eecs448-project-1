@@ -31,9 +31,9 @@ Ship::Ship(int size)
 
 void Ship::hit(int position)
 {
-  if(m_size > 5 || m_size < 0)
+  if(position > m_size-1 || position < 0)
   {
-    throw(std::runtime_error("Ships must be of size 1-5\n"));
+    throw(std::runtime_error("Firing out of range\n"));
   }
   else
   {
