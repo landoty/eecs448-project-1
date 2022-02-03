@@ -5,3 +5,6 @@ We will create our battleship game here
 ```sh
 $ git clone https://github.com/landoty/eecs448-project-1.git
 ```
+```sh
+$ git remote add origin https://github.com/landoty/eecs448-project-1.git
+```
