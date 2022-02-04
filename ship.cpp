@@ -61,7 +61,7 @@ bool Ship::is_sunk()
 {
   for(int i=0; i<m_size; i++)
   {
-    if(m_ship[i] != '*')
+    if(m_ship[i] == '*')
     {
       m_sunk = true;
     }
