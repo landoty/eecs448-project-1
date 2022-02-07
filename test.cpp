@@ -8,23 +8,14 @@ int main()
   std::cin >> size;
 
   Ship my_ship(size);
-  char* copy_ship = my_ship.get_ship();
-  int copy_length = my_ship.get_size();
-  for(int i=0; i<copy_length; i++)
+  char* ship_arr;
+  ship_arr = new char[my_ship.get_size()];
+  for(int i=0; i<my_ship.get_size(); i++)
   {
-    std::cout << copy_ship[i];
-    my_ship.hit(i);
+    std::cout << my_ship.get_ship()[i] << "\n";
+    ship_arr[i] = my_ship.get_ship()[i];
+    std::cout << "Ship arr: " << &ship_arr << '\n';
   }
-
-  copy_ship = my_ship.get_ship();
-  copy_length = my_ship.get_size();
-  for(int i=0; i<copy_length; i++)
-  {
-    std::cout << copy_ship[i];
-  }
-  std::cout << my_ship.is_sunk();
-  std::cout << "\n";
-
-  Ship second_ship(10);
+  delete[] ship_arr;
   return(0);
 }
