@@ -43,13 +43,7 @@ void Ship::hit(int position)
 
 char* Ship::get_ship()
 {
-  char* return_ship;
-  return_ship = new char[m_size];
-  for(int i=0; i<m_size; i++)
-  {
-    return_ship[i] = m_ship[i];
-  }
-  return(return_ship);
+  return(m_ship);
 }
 
 int Ship::get_size()
