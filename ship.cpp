@@ -71,5 +71,5 @@ bool Ship::is_sunk()
 
 Ship::~Ship()
 {
-  delete m_ship;
+  delete[] m_ship;
 }
