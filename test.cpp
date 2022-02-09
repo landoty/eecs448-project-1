@@ -1,9 +1,10 @@
 #include <iostream>
 #include "ship.h"
-
+#include "game.h"
+#include "board.h"
 int main()
 {
-  int size;
+  /*int size;
   std::cout << "Ship size: ";
   std::cin >> size;
 
@@ -16,6 +17,13 @@ int main()
     ship_arr[i] = my_ship.get_ship()[i];
     std::cout << "Ship arr: " << &ship_arr << '\n';
   }
-  delete[] ship_arr;
+  delete[] ship_arr;*/
+  //game Testing Methods
+  Game myGame;
+  myGame.fire("Player1");
+  Board myBoard;
+  myBoard.printBoard();
+
   return(0);
+
 }
