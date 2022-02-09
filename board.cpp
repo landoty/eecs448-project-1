@@ -42,22 +42,22 @@ Board::~Board()
 
 void Board::printBoard()
 {
-	int row = 0;						//row and col are used to print out board coordinates on the side of the board
+	int row = 1;						//row and col are used to print out board coordinates on the side of the board
 	char col = 'A';
-	std::cout << "*";
+	std::cout << '\n' << "	";
 	for (int i=0; i<m_boardSize; i++)
 	{
-		std::cout << col;				//Letters A-J are printed at top of board
+		std::cout << col << '	';				//Letters A-J are printed at top of board
 		col++;
 	}
 	std::cout << '\n';
 	for (int i=0; i<m_boardSize; i++)
 	{
-		std::cout << row;					//Numbers 0-9 are printed on side of board
+		std::cout << row << '	';		//Numbers 0-9 are printed on side of board
 		row++;
 		for (int j=0; j<m_boardSize; j++)
 		{
-			std::cout << board[i][j];		//Actual board is printed out
+			std::cout << board[i][j] << '	';		//Actual board is printed out
 		}
 		std::cout << '\n';
 	}
