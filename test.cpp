@@ -28,6 +28,7 @@ int main()
   try{
     //horizontal ship of size 3
     Ship my_ship1(3, 'h');
+    std::cout << my_ship1.get_direction() << "\n";
     //invalid ship direction
     //Ship my_ship2(3, 'x');
   }

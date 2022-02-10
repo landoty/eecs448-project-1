@@ -57,6 +57,14 @@ class Ship
     int get_size();
     /**
        * @pre : Ship array is defined
+       * @post : char m_direction returned
+       * @param : None
+       * @throw : None
+       * @retun : m_sunk
+    **/
+    char get_direction();
+    /**
+       * @pre : Ship array is defined
        * @post : Boolean if ship is sunk (all *'s)
        * @param : None
        * @throw : None

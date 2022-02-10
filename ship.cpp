@@ -61,6 +61,11 @@ int Ship::get_size()
   return(m_size);
 }
 
+char Ship::get_direction()
+{
+  return(m_direction);
+}
+
 bool Ship::is_sunk()
 {
   for(int i=0; i<m_size; i++)
