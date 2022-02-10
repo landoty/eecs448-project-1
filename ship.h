@@ -15,13 +15,14 @@ class Ship
   public:
     /**
        * @pre : None
-       * @post : Ship array created and m_sunk set to false
-       * @param : int size
+       * @post : Ship array created, m_size set to size,
+                  m_direction set to direction, and m_sunk set to false
+       * @param : int size, char direction
        * @throw : runtime error if size less than 0 or larger than 5
                   is provided
        * @retun : N/A
     **/
-    Ship(int size);
+    Ship(int size, char direction);
     /**
        * @pre : Ship array is defined
        * @post : Ship array pointer delete
@@ -64,6 +65,7 @@ class Ship
     bool is_sunk();
   private:
     int m_size;
+    char m_direction;
     char* m_ship;
     bool m_sunk;
 };

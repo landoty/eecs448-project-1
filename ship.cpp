@@ -11,16 +11,21 @@
 #include <string>
 #include "ship.h"
 
-Ship::Ship(int size)
+Ship::Ship(int size, char direction)
 {
   if(size > 5 || size < 0)
   {
     throw(std::runtime_error("Ships must be of size 1-5\n"));
   }
+  else if(direction != 'h' && direction != 'v')
+  {
+    throw(std::runtime_error("Ships must be of direction v(ertical) or h(orizontal)"));
+  }
   else
   {
     m_ship = new char[size];
     m_size = size;
+    m_direction = direction;
     for(int i=0; i<m_size; i++)
     {
       m_ship[i] = 's';

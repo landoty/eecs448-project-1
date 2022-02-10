@@ -17,12 +17,24 @@ int main()
     ship_arr[i] = my_ship.get_ship()[i];
     std::cout << "Ship arr: " << &ship_arr << '\n';
   }
-  delete[] ship_arr;*/
+  delete[] ship_arr;
   //game Testing Methods
   Game myGame;
   myGame.fire("Player1");
   Board myBoard;
-  myBoard.printBoard();
+  myBoard.printBoard();*/
+
+  //Ship testing with direction
+  try{
+    //horizontal ship of size 3
+    Ship my_ship1(3, 'h');
+    //invalid ship direction
+    //Ship my_ship2(3, 'x');
+  }
+  catch(std::exception &e)
+  {
+    std::cout << e.what() << "\n";
+  }
 
   return(0);
 
