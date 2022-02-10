@@ -27,7 +27,7 @@ int main()
   //Ship testing with direction
   try{
     //horizontal ship of size 3
-    Ship my_ship1(3, 'h');
+    Ship my_ship1(3, 'h', 'A', 2);
     std::cout << my_ship1.get_direction() << "\n";
     //invalid ship direction
     //Ship my_ship2(3, 'x');

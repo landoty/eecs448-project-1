@@ -16,13 +16,14 @@ class Ship
     /**
        * @pre : None
        * @post : Ship array created, m_size set to size,
-                  m_direction set to direction, and m_sunk set to false
-       * @param : int size, char direction
+                  m_direction set to direction, starting coordinates set
+                  and m_sunk set to false
+       * @param : int size, char direction, int starting_vert, char starting_horiz
        * @throw : runtime error if size less than 0 or larger than 5
                   is provided
        * @retun : N/A
     **/
-    Ship(int size, char direction);
+    Ship(int size, char direction, char starting_horiz, int starting_vert);
     /**
        * @pre : Ship array is defined
        * @post : Ship array pointer delete
@@ -34,11 +35,11 @@ class Ship
     /**
        * @pre : Ship array is defined
        * @post : Ship array updated at position to *
-       * @param : int position
-       * @throw : runtime error if position is out of bounds
+       * @param : int vert_coord, char horiz_coord
+       * @throw : runtime error if coordinate is not a hit
        * @retun : None
     **/
-    void hit(int position);
+    void hit(int vert_coord, char horiz_coord);
     /**
        * @pre : Ship array is defined
        * @post : Copy of ship array returned
@@ -73,6 +74,8 @@ class Ship
     bool is_sunk();
   private:
     int m_size;
+    int m_v_start;
+    char m_h_start;
     char m_direction;
     char* m_ship;
     bool m_sunk;

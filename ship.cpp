@@ -11,7 +11,7 @@
 #include <string>
 #include "ship.h"
 
-Ship::Ship(int size, char direction)
+Ship::Ship(int size, char direction, char starting_horiz, int starting_vert)
 {
   if(size > 5 || size < 0)
   {
@@ -21,11 +21,21 @@ Ship::Ship(int size, char direction)
   {
     throw(std::runtime_error("Ships must be of direction v(ertical) or h(orizontal)"));
   }
+  else if(starting_vert > 10 || starting_vert < 1)
+  {
+    throw(std::runtime_error("Invalid vertical starting position\n"));
+  }
+  else if(starting_horiz < 'A' || starting_horiz > 'J')
+  {
+    throw(std::runtime_error("Invalid horizontal starting position\n"));
+  }
   else
   {
     m_ship = new char[size];
     m_size = size;
     m_direction = direction;
+    m_v_start = starting_vert;
+    m_h_start = starting_horiz;
     for(int i=0; i<m_size; i++)
     {
       m_ship[i] = 's';
@@ -34,21 +44,15 @@ Ship::Ship(int size, char direction)
   }
 }
 
-void Ship::hit(int position)
+void Ship::hit(int vert_coord, char horiz_coord)
 {
-  if(position > m_size || position < 1)
-  {
-    throw(std::runtime_error("Firing out of range\n"));
-  }
-  else
-  {
+    //working to implement
     /*
       A ship of length n has n-many positions to hit.
       Calling hit on position 1 will mark the 0 index
       of m_ship arr as hit and so on
     */
-    m_ship[position-1] = '*';
-  }
+    m_ship[1] = '*';
 }
 
 char* Ship::get_ship()
