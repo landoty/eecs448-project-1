@@ -31,13 +31,18 @@ Ship::Ship(int size)
 
 void Ship::hit(int position)
 {
-  if(position > m_size-1 || position < 0)
+  if(position > m_size || position < 1)
   {
     throw(std::runtime_error("Firing out of range\n"));
   }
   else
   {
-    m_ship[position] = '*';
+    /*
+      A ship of length n has n-many positions to hit.
+      Calling hit on position 1 will mark the 0 index
+      of m_ship arr as hit and so on
+    */
+    m_ship[position-1] = '*';
   }
 }
 
