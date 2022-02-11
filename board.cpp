@@ -75,8 +75,9 @@ void Board::placeShip(Ship* entry)
 	int direction = 0;
 	int newCol = 0;
 	char col = entry->get_horiz_start();
+	col = tolower(col);
 	newCol = col;
-	newCol = col-65;
+	newCol = col-97;
 	int row = entry->get_vert_start();	
 	if(entry->get_direction() == 'h')
 	{
