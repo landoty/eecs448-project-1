@@ -11,9 +11,15 @@ class Game
     
 	
 	public:
-	Board myBoard;
+	Ship** player1_ships;
+	Ship** player2_ships;
+	Board player1_Board;
+	Board player2_Board;
+	Board player1_eBoard;
+	Board player2_eBoard;
 	char hitChar = '*';
 	char missChar= 'M';
+	int numShips = 0;
     Game();
 	
 	bool result;
