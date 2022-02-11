@@ -18,9 +18,11 @@ class Game
 	Board player1_eBoard;
 	Board player2_eBoard;
 	char hitChar = '*';
-	int x, y; 
+	char missChar= 'M';
 	int numShips = 0;
     Game();
+	
+	bool result;
 	void fire(std::string playerName);
 	bool gameEndCheck();
 	void shipPlacement();

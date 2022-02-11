@@ -6,7 +6,7 @@ board.o: board.cpp board.h
 	g++ -std=c++11 -g -Wall -c board.cpp
 ship.o: ship.cpp ship.h
 	g++ -std=c++11 -g -Wall -c ship.cpp
-game.o: game.cpp game.h  
+game.o: game.cpp  game.h 
 	g++ -std=c++11 -g -Wall -c game.cpp
 clean:
 	rm *.o ships
