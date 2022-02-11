@@ -84,6 +84,16 @@ int Ship::get_size()
   return(m_size);
 }
 
+int Ship::get_vert_start()
+{
+  return(m_v_start);
+}
+
+char Ship::get_horiz_start()
+{
+  return(m_h_start);
+}
+
 char Ship::get_direction()
 {
   return(m_direction);

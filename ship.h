@@ -58,6 +58,22 @@ class Ship
     int get_size();
     /**
        * @pre : None
+       * @post : char m_v_start returned
+       * @param : None
+       * @throw : None
+       * @retun : m_sunk
+    **/
+    int get_vert_start();
+    /**
+       * @pre : None
+       * @post : char m_h_start returned
+       * @param : None
+       * @throw : None
+       * @retun : m_sunk
+    **/
+    char get_horiz_start();
+    /**
+       * @pre : None
        * @post : char m_direction returned
        * @param : None
        * @throw : None
