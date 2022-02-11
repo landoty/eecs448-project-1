@@ -25,7 +25,7 @@ Ship::Ship(int size, char direction, char starting_horiz, int starting_vert)
   {
     throw(std::runtime_error("Invalid vertical starting position\n"));
   }
-  else if(starting_horiz < 'A' || starting_horiz > 'J')
+  else if(starting_horiz < 'a' || starting_horiz > 'j')
   {
     throw(std::runtime_error("Invalid horizontal starting position\n"));
   }
