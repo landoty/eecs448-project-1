@@ -20,4 +20,6 @@
 	 public:
 	 Executive();
 	 void play();
- }
+	 ~Executive();
+ };
+ #endif
