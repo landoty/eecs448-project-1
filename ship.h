@@ -15,15 +15,17 @@ class Ship
   public:
     /**
        * @pre : None
-       * @post : Ship array created and m_sunk set to false
-       * @param : int size
+       * @post : Ship array created, m_size set to size,
+                  m_direction set to direction, starting coordinates set
+                  and m_sunk set to false
+       * @param : int size, char direction, int starting_vert, char starting_horiz
        * @throw : runtime error if size less than 0 or larger than 5
                   is provided
        * @retun : N/A
     **/
-    Ship(int size);
+    Ship(int size, char direction, char starting_horiz, int starting_vert);
     /**
-       * @pre : Ship array is defined
+       * @pre : None
        * @post : Ship array pointer delete
        * @param : None
        * @throw : None
@@ -31,15 +33,15 @@ class Ship
     **/
     ~Ship();
     /**
-       * @pre : Ship array is defined
+       * @pre : Coordinates have been validated within 10x10, A-J0-10 board
        * @post : Ship array updated at position to *
-       * @param : int position
-       * @throw : runtime error if position is out of bounds
+       * @param : int vert_coord, char horiz_coord
+       * @throw : runtime error if coordinate is not a hit
        * @retun : None
     **/
-    void hit(int position);
+    void hit(char horiz_coord, int vert_coord);
     /**
-       * @pre : Ship array is defined
+       * @pre : None
        * @post : Copy of ship array returned
        * @param : None
        * @throw : None
@@ -47,7 +49,7 @@ class Ship
     **/
     char* get_ship();
     /**
-       * @pre : Ship array is defined
+       * @pre : None
        * @post : Ship size returned
        * @param : None
        * @throw : None
@@ -55,7 +57,31 @@ class Ship
     **/
     int get_size();
     /**
-       * @pre : Ship array is defined
+       * @pre : None
+       * @post : char m_v_start returned
+       * @param : None
+       * @throw : None
+       * @retun : m_sunk
+    **/
+    int get_vert_start();
+    /**
+       * @pre : None
+       * @post : char m_h_start returned
+       * @param : None
+       * @throw : None
+       * @retun : m_sunk
+    **/
+    char get_horiz_start();
+    /**
+       * @pre : None
+       * @post : char m_direction returned
+       * @param : None
+       * @throw : None
+       * @retun : m_sunk
+    **/
+    char get_direction();
+    /**
+       * @pre : None
        * @post : Boolean if ship is sunk (all *'s)
        * @param : None
        * @throw : None
@@ -64,6 +90,9 @@ class Ship
     bool is_sunk();
   private:
     int m_size;
+    int m_v_start;
+    char m_h_start;
+    char m_direction;
     char* m_ship;
     bool m_sunk;
 };

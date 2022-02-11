@@ -17,12 +17,31 @@ int main()
     ship_arr[i] = my_ship.get_ship()[i];
     std::cout << "Ship arr: " << &ship_arr << '\n';
   }
-  delete[] ship_arr;*/
+  delete[] ship_arr;
   //game Testing Methods
   Game myGame;
   myGame.fire("Player1");
   Board myBoard;
-  myBoard.printBoard();
+  myBoard.printBoard();*/
+
+  //Ship testing with direction
+  try{
+    //EXAMPLE
+    Ship my_ship1(3, 'h', 'D', 1);
+    std::cout << my_ship1.get_horiz_start() << my_ship1.get_vert_start() << "\n";
+    my_ship1.hit('E', 1);
+    std::cout << my_ship1.get_ship() << '\n';
+    Ship my_ship2(5, 'v', 'B', 1);
+    my_ship2.hit('B', 3);
+    std::cout << my_ship2.get_ship() << "\n";
+    //Misses
+    my_ship1.hit('C', 1);
+    my_ship2.hit('C', 1);
+  }
+  catch(std::exception &e)
+  {
+    std::cout << e.what() << "\n";
+  }
 
   return(0);
 
