@@ -28,6 +28,7 @@ int main()
   myBoard.printBoard();*/
 
   //Ship testing with direction
+  /*
   try{
     //EXAMPLE
     Ship my_ship1(3, 'h', 'd', 1);
@@ -44,7 +45,9 @@ int main()
   catch(std::exception &e)
   {
     std::cout << e.what() << "\n";
-  }
+  }*/
+  Executive exec;
+  exec.play();
 
   return(0);
 

@@ -33,7 +33,15 @@ void Game::shipPlacement()
 			if(i==1)
 			{
 				player1_ships[j] = new Ship(j+1, direction, col, row);
-				player1_Board.placeShip(player1_ships[j]);
+				try
+				{
+					player1_Board.placeShip(player1_ships[j]);
+					j++;
+				}
+				catch(std::exception& e)
+				{
+					std::cout<< e.what();
+				}
 			}
 			if(i==2)
 			{
@@ -76,7 +84,7 @@ void Game::fire(std::string playerName)
     }
     } while (result == false); //only accept user input 0-9
     
-    
+    /*
    if(myBoard.isValidSpace(newCol,row) == true)
     {
     myBoard.updateBoard(newCol,row,missChar);  //if board space does not have any ships mark with M
@@ -87,7 +95,7 @@ void Game::fire(std::string playerName)
         myBoard.updateBoard(newCol,row,hitChar); //if board space has a ship mark with *
                                                 //update with ship hit method
     }
-    myBoard.printBoard(); //print out updated board
+    myBoard.printBoard(); //print out updated board*/
 }
 bool Game::gameEndCheck()
 {
