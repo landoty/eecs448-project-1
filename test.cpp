@@ -2,6 +2,7 @@
 #include "ship.h"
 #include "game.h"
 #include "board.h"
+#include "Executive.h"
 int main()
 {
   /*int size;
@@ -19,6 +20,8 @@ int main()
   }
   delete[] ship_arr;*/
   //game Testing Methods
+  Executive exec;
+  exec.play();
   Game myGame;
   myGame.fire("Player1");
   Board myBoard;
