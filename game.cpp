@@ -9,8 +9,16 @@ Game::Game()
 
 void Game::shipPlacement()
 {	
-	std::cout << "Enter a number of ships from 1 to 5: ";
-	std::cin >> numShips;
+
+	while(numShips > 5 || numShips < 1)
+	{		
+		std::cout << "Enter a number of ships from 1 to 5: ";
+		std::cin >> numShips;
+		if(numShips >5 || numShips < 1)
+		{
+			std::cout << "Invalid number of ships. Try again.\n";
+		}
+	}
 	
 	player1_ships = new Ship*[numShips];
 	player2_ships = new Ship*[numShips];
@@ -19,26 +27,38 @@ void Game::shipPlacement()
 	{
 		for (int j=0; j<numShips; j++)
 		{
-			char col = 'A';
-			int row = 0;
-			char direction = 'a';
-			std::cout << "Player "<< i <<", where would you like to place ship " << j+1 << "?\n";
-			std::cout << "Column: ";
-			std::cin >> col;
-
-			std::cout << "Row: ";
-			std::cin >> row;
-			std::cout << "Direction: ";
-			std::cin >> direction;
-			if(i==1)
+			int invalid = 1;
+			while(invalid != 0)
 			{
-				player1_ships[j] = new Ship(j+1, direction, col, row);
-				player1_Board.placeShip(player1_ships[j]);
-			}
-			if(i==2)
-			{
-				player2_ships[j] = new Ship(j+1, direction, col, row);
-				player2_Board.placeShip(player2_ships[j]);
+				try
+				{
+					char col = 'A';
+					int row = 0;
+					char direction = 'a';
+					std::cout << "Player "<< i <<", where would you like to place ship " << j+1 << "?\n";
+					std::cout << "Column: ";
+					std::cin >> col;
+					std::cout << "Row: ";
+					std::cin >> row;
+					std::cout << "Direction: ";
+					std::cin >> direction;	
+					if(i==1)
+					{
+						player1_ships[j] = new Ship(j+1, direction, col, row);
+						player1_Board.placeShip(player1_ships[j]);
+					}
+					if(i==2)
+					{
+						player2_ships[j] = new Ship(j+1, direction, col, row);
+						player2_Board.placeShip(player2_ships[j]);
+					}
+					invalid = 0;
+				}
+				catch(std::exception& e)
+				{
+					std::cout << e.what() << '\n';
+					invalid++;
+				}
 			}
 		}
 	}
@@ -97,7 +117,7 @@ bool Game::gameEndCheck()
     return true;
     //if game has not ended (check all ship classes to see if all has status sunked)
    
-    return false;
+    return false;*/
 
 }
 Game::~Game()
