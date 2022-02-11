@@ -69,58 +69,45 @@ void Board::updateBoard(int col, int row, char entry)	//Allows for any coordinat
 	
 }
 
-void Board::placeShip(Ship& entry, int col, int row, char direction)  
+void Board::placeShip(Ship* entry)  
 {
 	int increment = 0;
-	if(direction == 'h')			//Horizontal orientation
+	int direction = 0;
+	int newCol = 0;
+	char col = entry->get_horiz_start();
+	newCol = col;
+	newCol = col-65;
+	int row = entry->get_vert_start();	
+	if(entry->get_direction() == 'h')
 	{
-		if(col+entry.get_size()-1 < 10)			//Makes sure ship doesn't get placed outside of board
-		{
-			for (int i=0; i<entry.get_size(); i++)
-			{				
-				if(isValidSpace(col, row))
-				{
-					updateBoard(col, row, entry.get_ship()[increment]);		//Ship is placed
-					col++;
-					increment++;
-				}
-				else
-				{
-					throw(std::runtime_error("Invalid space."));
-				}
-			}
-		}
-		else
-		{
-			throw(std::runtime_error("Ship can not be placed out of bounds."));
-		}
+		direction = newCol;
 	}
-	else if(direction == 'v')			
+	if(entry->get_direction() == 'v')
 	{
-		if(row+entry.get_size()-1 < 10)
+		direction = row;
+	}
+	if(direction+entry->get_size()-1 < 10)
+	{
+		for (int i=0; i<entry->get_size(); i++)
 		{
-			for (int i=0; i<entry.get_size(); i++)
-			{				
-				if(isValidSpace(col, row))
-				{					
-					updateBoard(col, row, entry.get_ship()[increment]);
+			if(isValidSpace(newCol, row-1))
+			{
+				updateBoard(newCol, row-1, entry->get_ship()[increment]);
+				if(entry->get_direction() == 'h')
+				{
+					newCol++;
+				}
+				if(entry->get_direction() == 'v')
+				{
 					row++;
-					increment++;
 				}
-				else
-				{
-					throw(std::runtime_error("Invalid space."));
-				}
+				increment++;
+			}
+			else
+			{
+				throw(std::runtime_error("Invalid space."));
 			}
 		}
-		else
-		{
-			throw(std::runtime_error("Ship can not be placed out of bounds."));
-		}
-	}
-	else
-	{
-		throw(std::runtime_error("Invalid direction."));
 	}
 }
 
@@ -135,3 +122,5 @@ bool Board::isValidSpace(int col, int row)
 		return(false);
 	}
 }
+
+
