@@ -13,8 +13,10 @@ class Game
 	public:
 	Board myBoard;
 	char hitChar = '*';
-	int x, y; 
+	char missChar= 'M';
     Game();
+	
+	bool result;
 	void fire(std::string playerName);
 	bool gameEndCheck();
 	void shipPlacement();
