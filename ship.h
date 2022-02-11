@@ -25,7 +25,7 @@ class Ship
     **/
     Ship(int size, char direction, char starting_horiz, int starting_vert);
     /**
-       * @pre : Ship array is defined
+       * @pre : None
        * @post : Ship array pointer delete
        * @param : None
        * @throw : None
@@ -33,15 +33,15 @@ class Ship
     **/
     ~Ship();
     /**
-       * @pre : Ship array is defined
+       * @pre : Coordinates have been validated within 10x10, A-J0-10 board
        * @post : Ship array updated at position to *
        * @param : int vert_coord, char horiz_coord
        * @throw : runtime error if coordinate is not a hit
        * @retun : None
     **/
-    void hit(int vert_coord, char horiz_coord);
+    void hit(char horiz_coord, int vert_coord);
     /**
-       * @pre : Ship array is defined
+       * @pre : None
        * @post : Copy of ship array returned
        * @param : None
        * @throw : None
@@ -49,7 +49,7 @@ class Ship
     **/
     char* get_ship();
     /**
-       * @pre : Ship array is defined
+       * @pre : None
        * @post : Ship size returned
        * @param : None
        * @throw : None
@@ -57,7 +57,7 @@ class Ship
     **/
     int get_size();
     /**
-       * @pre : Ship array is defined
+       * @pre : None
        * @post : char m_direction returned
        * @param : None
        * @throw : None
@@ -65,7 +65,7 @@ class Ship
     **/
     char get_direction();
     /**
-       * @pre : Ship array is defined
+       * @pre : None
        * @post : Boolean if ship is sunk (all *'s)
        * @param : None
        * @throw : None

@@ -44,15 +44,34 @@ Ship::Ship(int size, char direction, char starting_horiz, int starting_vert)
   }
 }
 
-void Ship::hit(int vert_coord, char horiz_coord)
+void Ship::hit(char horiz_coord, int vert_coord)
 {
-    //working to implement
     /*
-      A ship of length n has n-many positions to hit.
-      Calling hit on position 1 will mark the 0 index
-      of m_ship arr as hit and so on
+      Assumes coordinates being passed are valid within the 10x10 board.
+      Only checks if the shot is a hit or miss
     */
-    m_ship[1] = '*';
+    if(m_direction == 'h')
+    {
+      if(horiz_coord < m_h_start || vert_coord != m_v_start)
+      {
+        throw(std::runtime_error("Miss!"));
+      }
+      else
+      {
+        m_ship[horiz_coord - m_h_start] = '*';
+      }
+    }
+    else if(m_direction == 'v')
+    {
+      if(vert_coord < m_v_start || horiz_coord != m_h_start)
+      {
+        throw(std::runtime_error("Miss!"));
+      }
+      else
+      {
+        m_ship[vert_coord - m_v_start] = '*';
+      }
+    }
 }
 
 char* Ship::get_ship()

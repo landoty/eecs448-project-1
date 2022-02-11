@@ -26,11 +26,16 @@ int main()
 
   //Ship testing with direction
   try{
-    //horizontal ship of size 3
-    Ship my_ship1(3, 'h', 'A', 2);
-    std::cout << my_ship1.get_direction() << "\n";
-    //invalid ship direction
-    //Ship my_ship2(3, 'x');
+    //EXAMPLE
+    Ship my_ship1(3, 'h', 'D', 1);
+    my_ship1.hit('E', 1);
+    std::cout << my_ship1.get_ship() << '\n';
+    Ship my_ship2(5, 'v', 'B', 1);
+    my_ship2.hit('B', 3);
+    std::cout << my_ship2.get_ship() << "\n";
+    //Misses
+    my_ship1.hit('C', 1);
+    my_ship2.hit('C', 1);
   }
   catch(std::exception &e)
   {
