@@ -32,8 +32,8 @@
 	 char xCoordinate;
 	 int yCoordinate;
 	 char direction;
-	 std::string Player1 = " ";
-	 std::string Player2 = " ";
+	 std::string Player1 = "Player 1";
+	 std::string Player2 = "Player 2";
 	 std::cout<<"How many ships will each player get? (1-5)\n";
 	 std::cin>>shipNumber;
 	 //player 1 places ships
