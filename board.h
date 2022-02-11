@@ -62,7 +62,7 @@ class Board
        * @throw : Throws error if coordinates out of bounds, or ship already exists, or if direction invalid
        * @return : None
     **/
-	void placeShip(Ship& entry, int col, int row, char direction);
+	void placeShip(Ship* entry);
 	
 	/**
        * @pre : None
