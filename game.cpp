@@ -17,10 +17,10 @@ Game::Game()
 }
 
 void Game::shipPlacement()
-{	
+{
 
 	while(numShips > 5 || numShips < 1)
-	{		
+	{
 		std::cout << "Enter a number of ships from 1 to 5: ";
 		std::cin >> numShips;
 		if(numShips >5 || numShips < 1)
@@ -28,10 +28,10 @@ void Game::shipPlacement()
 			std::cout << "Invalid number of ships. Try again.\n";
 		}
 	}
-	
+
 	player1_ships = new Ship*[numShips];
 	player2_ships = new Ship*[numShips];
-	
+
 	for (int i=1; i<3; i++)
 	{
 		for (int j=0; j<numShips; j++)
@@ -57,7 +57,7 @@ void Game::shipPlacement()
                     if(result == false)
                     {
                     std::cout << "\nInvalid input. Please enter letters a-j.";
-                    }               
+                    }
                     } while (col>=9 && col <=0);
 
 					do
@@ -80,12 +80,12 @@ void Game::shipPlacement()
                     {
                         std::cout << "\nInvalid input. please enter v(ertical) or h(orizonal)";
                     }
-                    
+
                     } while (result == false);
-                    	
-					
-					
-					
+
+
+
+
 					if(i==1)
 					{
 						player1_ships[j] = new Ship(j+1, direction, col, row);
@@ -102,7 +102,7 @@ void Game::shipPlacement()
 				{
 					std::cout << e.what() << '\n';
 					invalid++;
-                    
+
 				}
 			}
 		}
@@ -110,7 +110,7 @@ void Game::shipPlacement()
 }
 void Game::fire(std::string playerName)
 {
-    //checks user input 
+    //checks user input
     char col = 'A';
     int newCol =0;
     int row = 0;
@@ -130,7 +130,7 @@ void Game::fire(std::string playerName)
         std::cout << "\nInvalid input. Please enter letters a-j.";
     }
     } while (result == false);  //only accept user input a-j
-     
+
     do
     {
     std::cout << "\nRow: ";
@@ -143,8 +143,8 @@ void Game::fire(std::string playerName)
     } while (result == false); //only accept user input 0-9
     if(playerName=="Player 1")
     {
-    missCount=0; 
- 
+    missCount=0;
+
         for(int i=0;i<numShips;i++)
  {
     try
@@ -155,18 +155,18 @@ void Game::fire(std::string playerName)
     {
         missCount++;
     }
-    
+
  }
     if(numShips==missCount)
     {
-        player1_eBoard.updateBoard(col,row-1,missChar);
-        
+        player1_eBoard.updateBoard(col,row,missChar);
+
     }
     else
     {
-        player1_eBoard.updateBoard(col,row-1,hitChar);
+        player1_eBoard.updateBoard(col,row,hitChar);
     }
-	
+
 	std::cout << '\n' << missCount << '\n';
 
     std::cout << "\nPlayer 1's board\n" ;
@@ -177,11 +177,11 @@ void Game::fire(std::string playerName)
     }
      if(playerName=="Player 2")
     {
-    missCount= 0; 
+    missCount= 0;
     std::cout << "\nPlayer 2's board\n";
     player2_Board.printBoard();
     std::cout << "\nEnemy's Board\n" ;
-    player2_eBoard.printBoard(); 
+    player2_eBoard.printBoard();
         for(int i=0;i<numShips;i++)
     {
     try
@@ -192,20 +192,20 @@ void Game::fire(std::string playerName)
     {
         missCount++;
     }
-    
+
     }
     if(numShips==missCount)
     {
-        player2_eBoard.updateBoard(col,row-1,missChar);
+        player2_eBoard.updateBoard(col,row,missChar);
     }
     else
     {
-        player2_eBoard.updateBoard(col,row-1,hitChar);
+        player2_eBoard.updateBoard(col,row,hitChar);
     }
      std::cout << "\nPlayer 2's board\n";
     player2_Board.printBoard();
     std::cout << "\nEnemy's Board\n" ;
-    player2_eBoard.printBoard(); 
+    player2_eBoard.printBoard();
     }
 }
 bool Game::player1Won()
@@ -214,7 +214,7 @@ bool Game::player1Won()
     {
         if(player1_ships[i]->is_sunk()==true)
             {
-                
+
                 player1WonCheck = true;
             }
             else
@@ -222,9 +222,9 @@ bool Game::player1Won()
                 player1WonCheck = false;
             }
     }
-        return player1WonCheck;     
+        return player1WonCheck;
 }
- 
+
 bool Game::gameEndCheck()
 {
         for(int i=0;i<numShips;i++)
@@ -249,5 +249,5 @@ Game::~Game()
 	}
 	delete[] player1_ships;
 	delete[] player2_ships;
-    
+
 }
