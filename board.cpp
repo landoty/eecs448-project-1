@@ -63,9 +63,13 @@ void Board::printBoard()
 	}
 }
 
-void Board::updateBoard(int col, int row, char entry)	//Allows for any coordinate on board to be updated
+void Board::updateBoard(char col, int row, char entry)	//Allows for any coordinate on board to be updated
 {
-		board[row][col] = entry;					
+	int newCol = 0;
+	col = tolower(col);
+	newCol = col;
+	newCol = newCol-97;
+	board[row][newCol] = entry;					
 	
 }
 
@@ -93,10 +97,10 @@ void Board::placeShip(Ship* entry)
 		{
 			if(isValidSpace(newCol, row-1))
 			{
-				updateBoard(newCol, row-1, entry->get_ship()[increment]);
+				updateBoard(col, row-1, entry->get_ship()[increment]);
 				if(entry->get_direction() == 'h')
 				{
-					newCol++;
+					col++;
 				}
 				if(entry->get_direction() == 'v')
 				{
