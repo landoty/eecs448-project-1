@@ -30,8 +30,9 @@ class Game
 	char missChar= 'M';
 	int numShips = 0;
     Game();
-	
-	bool result;
+	bool player1WonCheck;
+     
+	bool result =true;
 	    /**
        * @pre : None
        * @post :  take in playername string to determine what position the ship is and mark with * if not mark M for miss
@@ -40,7 +41,7 @@ class Game
        * @retun : N/A
     **/
 	void fire(std::string playerName);
-		    /**
+	/**
        * @pre : None
        * @post :  check for ship index and see if status is all sunk, if true then end game else continue
        * @param : none 
@@ -56,6 +57,15 @@ class Game
        * @retun : N/A
     **/
 	void shipPlacement();
+    /**
+       * @pre : None
+       * @post : return boolean of player 1 winning the game false for player 2
+       * @param : none
+       * @throw : none
+       * @retun : N/A
+    **/
+    bool player1Won();
+ 
 	~Game();
  
 };
