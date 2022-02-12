@@ -118,7 +118,7 @@ void Board::placeShip(Ship* entry)
 	}
 	else
 	{
-		throw(std::runtime_error("Ship not in bounds.");
+		throw(std::runtime_error("Ship not in bounds."));
 	}
 }
 
