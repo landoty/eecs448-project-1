@@ -33,15 +33,25 @@
 	 do
 	 {
 		 //asks player one for a move
-		 gameBoardMoves1.printBoard();
-		 gameBoardShips1.printBoard();
+		// gameBoardMoves1.printBoard();
+		// gameBoardShips1.printBoard();
 		 gameFunction.fire(player1);
 		 //then asks player two for a move
-		 gameBoardMoves2.printBoard();
-		 gameBoardShips2.printBoard();
+		// gameBoardMoves2.printBoard();
+		// gameBoardShips2.printBoard();
 		 gameFunction.fire(player2);
 	 }while(gameFunction.gameEndCheck() == false);   //checks if game is over and ends the loop if true
-	 std::cout<<"Game over!\n";
+	 if(gameFunction.player1Won()==true)
+	 {
+		 std::cout<<"\nGame over!\n";
+		 std::cout << "Player2 has won!\n";
+	 }
+	 	else 
+	 {
+		 std::cout<<"\nGame over!\n";
+		 std::cout << "Player1 has won!\n";
+	 }
+	 
  }
  
  Executive::~Executive()
