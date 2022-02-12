@@ -1,3 +1,12 @@
+/**------------------------------------------------------------------------
+ * @file : game.cpp
+ * @author : Eric Zhuo
+ * @assignment : EECS448 - Project 1
+ * @brief : Game classes that uses methods from board ship and game
+ *          header files to implement methods to use for the Battleship game
+ * @date: 02-10-21
+ *
+ ------------------------------------------------------------------------ **/
 #include "game.h"
 #include "ship.h"
 #include "board.h"
@@ -69,6 +78,7 @@ void Game::fire(std::string playerName)
     char col = 'A';
     int newCol =0;
     int row = 0;
+    int missCount =0;
     std::cout << "Player: " << playerName << "\nEnter Coordinate to Attack(letters a-j for column and 0-9 for rows (example column: a and 2 )): \n";
 
     do
@@ -95,30 +105,109 @@ void Game::fire(std::string playerName)
           std::cout << "\nInvalid input. Please enter numbers 0-9.";
     }
     } while (result == false); //only accept user input 0-9
-    
-    
-   if(myBoard.isValidSpace(newCol,row) == true)
+    if(playerName=="Player 1")
     {
-    myBoard.updateBoard(newCol,row,missChar);  //if board space does not have any ships mark with M
-    // myShip.hit(newCol,row); //update with ship hit method
-    }
-    else if(myBoard.isValidSpace(newCol,row) == false)
+    missCount= 0; 
+    std::cout << "\nPlayer 1's board\n" ;
+     player1_Board.printBoard();
+    std::cout << "\nEnemy's Board\n" ;
+     player1_eBoard.printBoard();
+        for(int i=0;i<numShips;i++)
+ {
+    try
     {
-        myBoard.updateBoard(newCol,row,hitChar); //if board space has a ship mark with *
-                                                //update with ship hit method
+       player2_ships[i]->hit(newCol, row);
     }
-    myBoard.printBoard(); //print out updated board
+    catch(const std::exception& e)
+    {
+        missCount++;
+    }
+    
+ }
+    if(numShips==missCount)
+    {
+        player1_eBoard.updateBoard(newCol,row,missChar);
+    }
+    else
+    {
+        player1_eBoard.updateBoard(newCol,row,hitChar);
+    }
+
+    std::cout << "\nPlayer 1's board\n" ;
+     player1_Board.printBoard();
+    std::cout << "\nEnemy's Board\n" ;
+     player1_eBoard.printBoard();
+
+    }
+     if(playerName=="Player 2")
+    {
+    missCount= 0; 
+    std::cout << "\nPlayer 2's board\n";
+    player2_Board.printBoard();
+    std::cout << "\nEnemy's Board\n" ;
+    player2_eBoard.printBoard(); 
+        for(int i=0;i<numShips;i++)
+    {
+    try
+    {
+       player1_ships[i]->hit(newCol, row);
+    }
+    catch(const std::exception& e)
+    {
+        missCount++;
+    }
+    
+    }
+    if(numShips==missCount)
+    {
+        player2_eBoard.updateBoard(newCol,row,missChar);
+    }
+    else
+    {
+        player2_eBoard.updateBoard(newCol,row,hitChar);
+    }
+     std::cout << "\nPlayer 2's board\n";
+    player2_Board.printBoard();
+    std::cout << "\nEnemy's Board\n" ;
+    player2_eBoard.printBoard(); 
+    }
 }
+/*bool Game::player1EndGameCheck()
+{
+    for(int i =0; i<numShips;i++)
+    {
+        if(player1_ships[i]->is_sunk()==false)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+bool Game::player2EndGameCheck()
+{
+    for(int i =0; i<numShips;i++)
+    {
+        if(player2_ships[i]->is_sunk()==false)
+        {
+            return false;
+        }
+    }
+    return true;
+}*/
 bool Game::gameEndCheck()
 {
-    //checks if all ships are sunked, who won the game
-    //if someone has won (check all ship classes to see if all has status sunked)
-    
-    return true;
-    //if game has not ended (check all ship classes to see if all has status sunked)
-   
-    return false;*/
-
+        for(int i=0;i<numShips;i++)
+        {
+            if(player1_ships[i]->is_sunk()==true)
+            {
+                return true;
+            }
+            if(player2_ships[i]->is_sunk()==true)
+            {
+                return true;
+            }
+        }
+     return false;
 }
 Game::~Game()
 {

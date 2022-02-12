@@ -25,7 +25,7 @@
 	 Board gameBoardMoves1;
 	 Board gameBoardMoves2;          //4 game boards for view and ships
 	 Board gameBoardShips1;
-	 Board gameBoardShips2;
+	Board gameBoardShips2;
 	 std::string player1 = "Player 1";
 	 std::string player2 = "Player 2";
 	 gameFunction.shipPlacement();
