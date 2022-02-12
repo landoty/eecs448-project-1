@@ -7,7 +7,5 @@ int main()
 {
  Executive myExecutive;
  myExecutive.play();
-  
   return(0);
-
 }

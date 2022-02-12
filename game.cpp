@@ -46,14 +46,45 @@ void Game::shipPlacement()
 					int row = 0;
 					char direction = 'a';
 					std::cout << "Player "<< i <<", where would you like to place ship " << j+1 << "?\n";
-					std::cout << "Column: ";
-					std::cin >> col;
-					std::cout << "Row: ";
+                    do
+                    {
+                    std::cout << "\nColumn: ";
+                    std::cin >> col;
+                    col=tolower(col);
+                    newCol = col;
+                    newCol = newCol - 97;
+                    result =(newCol<=9 && newCol >=0);
+                    if(result == false)
+                    {
+                    std::cout << "\nInvalid input. Please enter letters a-j.";
+                    }               
+                    } while (col>=9 && col <=0);
+
+					do
+                    {
+                    std::cout << "\nRow: ";
 					std::cin >> row;
-					std::cout << "Direction: ";
-					std::cin >> direction;	
+                     result =(row<=9 && row >=0);
+                     if(result == false)
+                    {
+                    std::cout << "\nInvalid input. Please enter numbers 0-9.";
+                    }
+                    } while (result == false);
+
+                    do
+                    {
+                    std::cout << "Direction: ";
+					std::cin >> direction;
+                    result = (direction == 'v' || direction == 'h');
+                    if(result == false)
+                    {
+                        std::cout << "\nInvalid input. please enter v(ertical) or h(orizonal)";
+                    }
+                    
+                    } while (result == false);
+                    	
 					
-					col = tolower(col);
+					
 					
 					if(i==1)
 					{
@@ -71,6 +102,7 @@ void Game::shipPlacement()
 				{
 					std::cout << e.what() << '\n';
 					invalid++;
+                    
 				}
 			}
 		}
@@ -83,7 +115,7 @@ void Game::fire(std::string playerName)
     int newCol =0;
     int row = 0;
     int missCount =0;
-    std::cout << "Player: " << playerName << "\nEnter Coordinate to Attack(letters a-j for column and 0-9 for rows (example column: a and 2 )): \n";
+    std::cout << "Player: " << playerName << "\nEnter Coordinate to Attack(letters a-j for column and 0-9 for rows (example column: a and row: 2 = a2)): \n";
 
     do
     {
@@ -111,16 +143,13 @@ void Game::fire(std::string playerName)
     } while (result == false); //only accept user input 0-9
     if(playerName=="Player 1")
     {
-    missCount= 0; 
- //   std::cout << "\nPlayer 1's board\n" ;
-  //   player1_Board.printBoard();
- //   std::cout << "\nEnemy's Board\n" ;
- //    player1_eBoard.printBoard();
+    missCount=0; 
+ 
         for(int i=0;i<numShips;i++)
  {
     try
     {
-       player2_ships[i]->hit(col, row-1);
+       player2_ships[i]->hit(col, row);
     }
     catch(const std::exception& e)
     {
@@ -131,6 +160,7 @@ void Game::fire(std::string playerName)
     if(numShips==missCount)
     {
         player1_eBoard.updateBoard(col,row-1,missChar);
+        
     }
     else
     {
@@ -154,7 +184,7 @@ void Game::fire(std::string playerName)
     {
     try
     {
-       player1_ships[i]->hit(col, row-1);
+       player1_ships[i]->hit(col, row);
     }
     catch(const std::exception& e)
     {
@@ -176,28 +206,23 @@ void Game::fire(std::string playerName)
     player2_eBoard.printBoard(); 
     }
 }
-/*bool Game::player1EndGameCheck()
+bool Game::player1Won()
 {
-    for(int i =0; i<numShips;i++)
+    for(int i=0;i<numShips;i++)
     {
-        if(player1_ships[i]->is_sunk()==false)
-        {
-            return false;
-        }
+        if(player1_ships[i]->is_sunk()==true)
+            {
+                
+                player1WonCheck = true;
+            }
+            else
+            {
+                player1WonCheck = false;
+            }
     }
-    return true;
+        return player1WonCheck;     
 }
-bool Game::player2EndGameCheck()
-{
-    for(int i =0; i<numShips;i++)
-    {
-        if(player2_ships[i]->is_sunk()==false)
-        {
-            return false;
-        }
-    }
-    return true;
-}*/
+ 
 bool Game::gameEndCheck()
 {
         for(int i=0;i<numShips;i++)
