@@ -12,15 +12,13 @@
  
  class Executive
  {
+	 private:
+	 bool gameOver;
+	 int boardSize;
+	 int shipNumber;
+	 
 	 public:
 	 Executive();
-	 /**
-       * @pre : None
-       * @post : None
-       * @param : None
-       * @throw : None
-       * @retun : None
-    **/
 	 void play();
 	 ~Executive();
  };
