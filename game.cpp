@@ -166,6 +166,8 @@ void Game::fire(std::string playerName)
     {
         player1_eBoard.updateBoard(col,row-1,hitChar);
     }
+	
+	std::cout << '\n' << missCount << '\n';
 
     std::cout << "\nPlayer 1's board\n" ;
      player1_Board.printBoard();
