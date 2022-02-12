@@ -69,7 +69,7 @@ void Board::updateBoard(char col, int row, char entry)	//Allows for any coordina
 	col = tolower(col);
 	newCol = col;
 	newCol = newCol-97;
-	board[row][newCol] = entry;					
+	board[row-1][newCol] = entry;					
 	
 }
 
@@ -95,12 +95,14 @@ void Board::placeShip(Ship* entry)
 	{
 		for (int i=0; i<entry->get_size(); i++)
 		{
+			
 			if(isValidSpace(newCol, row-1))
 			{
-				updateBoard(col, row-1, entry->get_ship()[increment]);
+				updateBoard(col, row, entry->get_ship()[increment]);
 				if(entry->get_direction() == 'h')
 				{
 					col++;
+					newCol++;
 				}
 				if(entry->get_direction() == 'v')
 				{
@@ -113,6 +115,10 @@ void Board::placeShip(Ship* entry)
 				throw(std::runtime_error("Invalid space."));
 			}
 		}
+	}
+	else
+	{
+		throw(std::runtime_error("Ship not in bounds."));
 	}
 }
 
