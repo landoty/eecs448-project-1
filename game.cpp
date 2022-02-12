@@ -42,6 +42,7 @@ void Game::shipPlacement()
 				try
 				{
 					char col = 'A';
+					int newCol = 0;
 					int row = 0;
 					char direction = 'a';
 					std::cout << "Player "<< i <<", where would you like to place ship " << j+1 << "?\n";
@@ -51,6 +52,9 @@ void Game::shipPlacement()
 					std::cin >> row;
 					std::cout << "Direction: ";
 					std::cin >> direction;	
+					
+					col = tolower(col);
+					
 					if(i==1)
 					{
 						player1_ships[j] = new Ship(j+1, direction, col, row);
@@ -108,15 +112,15 @@ void Game::fire(std::string playerName)
     if(playerName=="Player 1")
     {
     missCount= 0; 
-    std::cout << "\nPlayer 1's board\n" ;
-     player1_Board.printBoard();
-    std::cout << "\nEnemy's Board\n" ;
-     player1_eBoard.printBoard();
+ //   std::cout << "\nPlayer 1's board\n" ;
+  //   player1_Board.printBoard();
+ //   std::cout << "\nEnemy's Board\n" ;
+ //    player1_eBoard.printBoard();
         for(int i=0;i<numShips;i++)
  {
     try
     {
-       player2_ships[i]->hit(newCol, row);
+       player2_ships[i]->hit(col, row-1);
     }
     catch(const std::exception& e)
     {
@@ -126,11 +130,11 @@ void Game::fire(std::string playerName)
  }
     if(numShips==missCount)
     {
-        player1_eBoard.updateBoard(newCol,row,missChar);
+        player1_eBoard.updateBoard(col,row-1,missChar);
     }
     else
     {
-        player1_eBoard.updateBoard(newCol,row,hitChar);
+        player1_eBoard.updateBoard(col,row-1,hitChar);
     }
 
     std::cout << "\nPlayer 1's board\n" ;
@@ -150,7 +154,7 @@ void Game::fire(std::string playerName)
     {
     try
     {
-       player1_ships[i]->hit(newCol, row);
+       player1_ships[i]->hit(col, row-1);
     }
     catch(const std::exception& e)
     {
@@ -160,11 +164,11 @@ void Game::fire(std::string playerName)
     }
     if(numShips==missCount)
     {
-        player2_eBoard.updateBoard(newCol,row,missChar);
+        player2_eBoard.updateBoard(col,row-1,missChar);
     }
     else
     {
-        player2_eBoard.updateBoard(newCol,row,hitChar);
+        player2_eBoard.updateBoard(col,row-1,hitChar);
     }
      std::cout << "\nPlayer 2's board\n";
     player2_Board.printBoard();

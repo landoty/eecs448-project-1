@@ -53,7 +53,7 @@ class Board
        * @throw : None
        * @return : None
     **/
-	void updateBoard(int col, int row, char entry);
+	void updateBoard(char col, int row, char entry);
 	
 	/**
        * @pre : None
