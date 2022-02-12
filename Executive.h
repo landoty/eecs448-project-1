@@ -9,14 +9,16 @@
  ------------------------------------------------------------------------ **/
  #ifndef EXECUTIVE_H
  #define EXECUTIVE_H
- 
+
  class Executive
  {
 	 private:
-	 bool gameOver;
+	 /*
+   commenting out for now. unused
+   bool gameOver;
 	 int boardSize;
 	 int shipNumber;
-	 
+	 */
 	 public:
 	 Executive();
 	 void play();
