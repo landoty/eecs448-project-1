@@ -52,7 +52,7 @@ void Ship::hit(char horiz_coord, int vert_coord)
     */
     if(m_direction == 'h')
     {
-      if(horiz_coord < m_h_start || vert_coord != m_v_start)
+      if(horiz_coord < m_h_start || (horiz_coord > (m_h_start + m_size - 1)) || vert_coord != m_v_start)
       {
         throw(std::runtime_error("Miss!"));
       }
@@ -63,7 +63,7 @@ void Ship::hit(char horiz_coord, int vert_coord)
     }
     else if(m_direction == 'v')
     {
-      if(vert_coord < m_v_start || horiz_coord != m_h_start)
+      if(vert_coord < m_v_start || (vert_coord > (m_v_start + m_size - 1)) || horiz_coord != m_h_start)
       {
         throw(std::runtime_error("Miss!"));
       }
@@ -106,6 +106,11 @@ bool Ship::is_sunk()
     if(m_ship[i] == '*')
     {
       m_sunk = true;
+    }
+    else
+    {
+      m_sunk = false;
+      break;
     }
   }
   return(m_sunk);

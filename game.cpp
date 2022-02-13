@@ -146,7 +146,7 @@ void Game::fire(std::string playerName)
 	    }
     }
 		while (result == false); //only accept user input 1-10
-		
+
 		if(playerName=="Player 1")
     {
     	missCount=0;
@@ -165,11 +165,7 @@ void Game::fire(std::string playerName)
     	{
       	player1_eBoard.updateBoard(col,row,missChar);
     	}
-    	else if(numShips!=missCount)
-		{
-			player1_eBoard.updateBoard(col,row,missChar);
-		}
-		else 
+		else
     	{
       	player1_eBoard.updateBoard(col,row,hitChar);
     	}
@@ -196,15 +192,10 @@ void Game::fire(std::string playerName)
 	        missCount++;
 	    	}
 			}
-
 		if(numShips==missCount)
 	    {
 	      player2_eBoard.updateBoard(col,row,missChar);
 	    }
-		else if(numShips!=missCount)
-		{
-		  player2_eBoard.updateBoard(col,row,missChar);
-		}
 	    else
 	    {
 	      player2_eBoard.updateBoard(col,row,hitChar);
@@ -235,28 +226,25 @@ bool Game::player1Won()
 
 bool Game::gameEndCheck()
 {
-		bool player1_end = false;
-		bool player2_end = false;
+		bool player1_end = true;
+		bool player2_end = true;
     for(int i=0;i<numShips;i++)
     {
-        if(player1_ships[i]->is_sunk()==true)
+        if(player1_ships[i]->is_sunk() == false)
         {
-            player1_end = true;
+            player1_end = false;
+						break;
         }
-				else
-				{
-					player1_end = false;
-				}
-        if(player2_ships[i]->is_sunk()==true)
-        {
-            player2_end = true;
-        }
-				else
-				{
-					player2_end = false;
-				}
-    }
- 		return(player1_end || player2_end);
+		}
+		for(int i=0;i<numShips;i++)
+		{
+			if(player2_ships[i]->is_sunk()==false)
+      {
+          player2_end = false;
+					break;
+      }
+		}
+ 	return(player1_end || player2_end);
 }
 Game::~Game()
 {
