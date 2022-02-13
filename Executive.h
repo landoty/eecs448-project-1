@@ -9,18 +9,18 @@
  ------------------------------------------------------------------------ **/
  #ifndef EXECUTIVE_H
  #define EXECUTIVE_H
- 
+
  class Executive
  {
+	 private:
+	 /*
+   commenting out for now. unused
+   bool gameOver;
+	 int boardSize;
+	 int shipNumber;
+	 */
 	 public:
 	 Executive();
-	 /**
-       * @pre : None
-       * @post : None
-       * @param : None
-       * @throw : None
-       * @retun : None
-    **/
 	 void play();
 	 ~Executive();
  };

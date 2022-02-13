@@ -63,9 +63,13 @@ void Board::printBoard()
 	}
 }
 
-void Board::updateBoard(int col, int row, char entry)	//Allows for any coordinate on board to be updated
+void Board::updateBoard(char col, int row, char entry)	//Allows for any coordinate on board to be updated
 {
-		board[row][col] = entry;					
+	int newCol = 0;
+	col = tolower(col);			//Char for column is automatically converted to the lower case
+	newCol = col;
+	newCol = newCol-97;					//Converts to ASCII value and subtracts by 97 so that a=0, b=1, etc.
+	board[row-1][newCol] = entry;		//Since arrays start at 0, but the board starts at 1, the row is subtracted by 1			
 	
 }
 
@@ -87,20 +91,22 @@ void Board::placeShip(Ship* entry)
 	{
 		direction = row;
 	}
-	if(direction+entry->get_size()-1 < 10)
+	if(direction+entry->get_size()-1 <= 10)			//Makes sure the size of the ship will fit inside the board
 	{
 		for (int i=0; i<entry->get_size(); i++)
 		{
-			if(isValidSpace(newCol, row-1))
+			
+			if(isValidSpace(newCol, row-1))			//Checks if the inputted coordinate is empty
 			{
-				updateBoard(newCol, row-1, entry->get_ship()[increment]);
+				updateBoard(col, row, entry->get_ship()[increment]);		//Board at coordinates is updated
 				if(entry->get_direction() == 'h')
 				{
+					col++;			//if horizontal, the cols get changed
 					newCol++;
 				}
 				if(entry->get_direction() == 'v')
 				{
-					row++;
+					row++;			//if vertical, the rows get changed
 				}
 				increment++;
 			}
@@ -109,6 +115,10 @@ void Board::placeShip(Ship* entry)
 				throw(std::runtime_error("Invalid space."));
 			}
 		}
+	}
+	else
+	{
+		throw(std::runtime_error("Ship not in bounds."));
 	}
 }
 

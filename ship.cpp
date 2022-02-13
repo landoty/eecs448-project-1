@@ -52,7 +52,8 @@ void Ship::hit(char horiz_coord, int vert_coord)
     */
     if(m_direction == 'h')
     {
-      if(horiz_coord < m_h_start || vert_coord != m_v_start)
+      //Checks if fire is within the same row and within the range of the ship length
+      if(horiz_coord < m_h_start || (horiz_coord > (m_h_start + m_size - 1)) || vert_coord != m_v_start)
       {
         throw(std::runtime_error("Miss!"));
       }
@@ -63,7 +64,8 @@ void Ship::hit(char horiz_coord, int vert_coord)
     }
     else if(m_direction == 'v')
     {
-      if(vert_coord < m_v_start || horiz_coord != m_h_start)
+      //Checks if fire is within the same column and within the range of the ship length
+      if(vert_coord < m_v_start || (vert_coord > (m_v_start + m_size - 1)) || horiz_coord != m_h_start)
       {
         throw(std::runtime_error("Miss!"));
       }
@@ -106,6 +108,12 @@ bool Ship::is_sunk()
     if(m_ship[i] == '*')
     {
       m_sunk = true;
+    }
+    else
+    {
+      //If an s is seen, the ship is not sunk and can break the checking loop
+      m_sunk = false;
+      break;
     }
   }
   return(m_sunk);
