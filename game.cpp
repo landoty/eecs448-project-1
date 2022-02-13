@@ -68,10 +68,10 @@ void Game::shipPlacement()
           {
           	std::cout << "Row: ";
 						std::cin >> row;
-           	result =(row<=9 && row >=0);
+           	result =(row<=10 && row >=1);
            	if(result == false)
           	{
-          		std::cout << "Invalid input. Please enter numbers 0-9.";
+          		std::cout << "Invalid input. Please enter numbers 1-10.";
           	}
           }
 					while (result == false);
@@ -139,13 +139,13 @@ void Game::fire(std::string playerName)
     {
 	    std::cout << "Row: ";
 	    std::cin >> row;
-	    result =(row<=9 && row >=0);
+	    result =(row<=10 && row >=1);
 	    if(result == false)
 	    {
-	          std::cout << "Invalid input. Please enter numbers 0-9.";
+	          std::cout << "Invalid input. Please enter numbers 1-10.";
 	    }
     }
-		while (result == false); //only accept user input 0-9
+		while (result == false); //only accept user input 1-10
 
 		if(playerName=="Player 1")
     {
