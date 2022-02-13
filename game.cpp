@@ -174,10 +174,12 @@ void Game::fire(std::string playerName)
 			}
     	if(numShips==missCount) //if misses equals to the ship index it would mark the specific location with M for miss
     	{
+		std::cout << "\nMISS!\n";
       	player1_eBoard.updateBoard(col,row,missChar);
     	}
 		else
     	{
+			std::cout << "\nHIT!\n";
       	player1_eBoard.updateBoard(col,row,hitChar); //if the miss counter is not incremented it would mark with * for hit
     	}
 
@@ -205,10 +207,12 @@ void Game::fire(std::string playerName)
 			}
 		if(numShips==missCount)
 	    {
+			std::cout << "\nMISS!\n";
 	      player2_eBoard.updateBoard(col,row,missChar); //if misses equals to the ship index it would mark the specific location with M for miss
 	    }
 	    else
 	    {
+			std::cout << "\nHIT!\n";
 	      player2_eBoard.updateBoard(col,row,hitChar); //if the miss counter is not incremented it would mark with * for hit
 	    }
 			std::cout << "===============================================\n";
