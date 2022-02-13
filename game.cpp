@@ -146,7 +146,7 @@ void Game::fire(std::string playerName)
 	    }
     }
 		while (result == false); //only accept user input 1-10
-
+		
 		if(playerName=="Player 1")
     {
     	missCount=0;
@@ -227,18 +227,28 @@ bool Game::player1Won()
 
 bool Game::gameEndCheck()
 {
-        for(int i=0;i<numShips;i++)
+		bool player1_end = false;
+		bool player2_end = false;
+    for(int i=0;i<numShips;i++)
+    {
+        if(player1_ships[i]->is_sunk()==true)
         {
-            if(player1_ships[i]->is_sunk()==true)
-            {
-                return true;
-            }
-            if(player2_ships[i]->is_sunk()==true)
-            {
-                return true;
-            }
+            player1_end = true;
         }
-     return false;
+				else
+				{
+					player1_end = false;
+				}
+        if(player2_ships[i]->is_sunk()==true)
+        {
+            player2_end = true;
+        }
+				else
+				{
+					player2_end = false;
+				}
+    }
+ 		return(player1_end || player2_end);
 }
 Game::~Game()
 {
