@@ -26,7 +26,10 @@ void Game::shipPlacement()
 		std::cin >> numShips;
 		if(numShips >5 || numShips < 1)
 		{
+			std::cin.clear();
+			std::cin.ignore();
 			std::cout << "Invalid number of ships. Try again.\n";
+			std::cin >> numShips;
 		}
 		std::cout << "===============================================\n";
 	}
