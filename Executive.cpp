@@ -13,19 +13,23 @@
  #include "game.h"
  #include <stdexcept>
  #include <iostream>
- 
+
  Executive::Executive()
  {
  }
- 
+
  void Executive::play()
  {
 	 Game gameFunction;               //initializes the game logic object
-	 std::cout<<"Welcome to Battleship!\n";
-	 Board gameBoardMoves1;
+   std::cout << "===============================================\n";
+   std::cout<<"Welcome to Battleship!\n";
+   std::cout << "===============================================\n";
+   /* Don't believe these are needed
+   Board gameBoardMoves1;
 	 Board gameBoardMoves2;          //4 game boards for view and ships
 	 Board gameBoardShips1;
-	Board gameBoardShips2;
+	 Board gameBoardShips2;
+   */
 	 std::string player1 = "Player 1";
 	 std::string player2 = "Player 2";
 	 gameFunction.shipPlacement();
@@ -43,17 +47,21 @@
 	 }while(gameFunction.gameEndCheck() == false);   //checks if game is over and ends the loop if true
 	 if(gameFunction.player1Won()==true)
 	 {
-		 std::cout<<"\nGame over!\n";
-		 std::cout << "Player2 has won!\n";
-	 }
-	 	else 
-	 {
-		 std::cout<<"\nGame over!\n";
+     std::cout << "===============================================\n";
+		 std::cout<<"Game over!\n";
 		 std::cout << "Player1 has won!\n";
+     std::cout << "===============================================\n";
 	 }
-	 
+	 	else
+	 {
+     std::cout << "===============================================\n";
+		 std::cout<<"Game over!\n";
+		 std::cout << "Player2 has won!\n";
+     std::cout << "===============================================\n";
+	 }
+
  }
- 
+
  Executive::~Executive()
  {
  }

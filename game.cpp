@@ -21,12 +21,14 @@ void Game::shipPlacement()
 
 	while(numShips > 5 || numShips < 1)
 	{
+		std::cout << "===============================================\n";
 		std::cout << "Enter a number of ships from 1 to 5: ";
 		std::cin >> numShips;
 		if(numShips >5 || numShips < 1)
 		{
 			std::cout << "Invalid number of ships. Try again.\n";
 		}
+		std::cout << "===============================================\n";
 	}
 
 	player1_ships = new Ship*[numShips];
@@ -45,10 +47,11 @@ void Game::shipPlacement()
 					int newCol = 0;
 					int row = 0;
 					char direction = 'a';
+					std::cout << "===============================================\n";
 					std::cout << "Player "<< i <<", where would you like to place ship " << j+1 << "?\n";
           do
           {
-	          std::cout << "\nColumn: ";
+	          std::cout << "Column: ";
 	          std::cin >> col;
 	          col=tolower(col);
 	          newCol = col;
@@ -56,19 +59,19 @@ void Game::shipPlacement()
 	          result =(newCol<=9 && newCol >=0);
 	          if(result == false)
 	          {
-	          	std::cout << "\nInvalid input. Please enter letters a-j.";
+	          	std::cout << "Invalid input. Please enter letters a-j.";
 	          }
           }
 					while (result == false);
 
 					do
           {
-          	std::cout << "\nRow: ";
+          	std::cout << "Row: ";
 						std::cin >> row;
            	result =(row<=9 && row >=0);
            	if(result == false)
           	{
-          		std::cout << "\nInvalid input. Please enter numbers 0-9.";
+          		std::cout << "Invalid input. Please enter numbers 0-9.";
           	}
           }
 					while (result == false);
@@ -80,10 +83,11 @@ void Game::shipPlacement()
           	result = (direction == 'v' || direction == 'h');
           	if(result == false)
           	{
-              std::cout << "\nInvalid input. please enter v(ertical) or h(orizonal)";
+              std::cout << "Invalid input. please enter v(ertical) or h(orizonal)";
           	}
           }
 					while (result == false);
+					std::cout << "===============================================\n";
 
 					if(i==1)
 					{
@@ -113,11 +117,12 @@ void Game::fire(std::string playerName)
     int newCol =0;
     int row = 0;
     int missCount =0;
-    std::cout << "Player: " << playerName << "\nEnter Coordinate to Attack(letters a-j for column and 0-9 for rows (example column: a and row: 2 = a2)): \n";
-
+		std::cout << "===============================================\n";
+    std::cout << "Player: " << playerName << "\nEnter Coordinate to Attack\n(letters a-j for column and 0-9 for rows\n(example column: a and row: 2 = a2)):\n";
+		std::cout << "===============================================\n";
     do
     {
-    	std::cout << "\nColumn: ";
+    	std::cout << "Column: ";
     	std::cin >> col;
     	col=tolower(col);
     	newCol = col;
@@ -125,19 +130,19 @@ void Game::fire(std::string playerName)
     	result =(newCol<=9 && newCol >=0);
     	if(result == false)
     	{
-      	std::cout << "\nInvalid input. Please enter letters a-j.";
+      	std::cout << "Invalid input. Please enter letters a-j.";
     	}
     }
 		while (result == false);  //only accept user input a-j
 
     do
     {
-	    std::cout << "\nRow: ";
+	    std::cout << "Row: ";
 	    std::cin >> row;
 	    result =(row<=9 && row >=0);
 	    if(result == false)
 	    {
-	          std::cout << "\nInvalid input. Please enter numbers 0-9.";
+	          std::cout << "Invalid input. Please enter numbers 0-9.";
 	    }
     }
 		while (result == false); //only accept user input 0-9
@@ -165,10 +170,12 @@ void Game::fire(std::string playerName)
       	player1_eBoard.updateBoard(col,row,hitChar);
     	}
 
-    	std::cout << "\nPlayer 1's board\n" ;
+			std::cout << "===============================================\n";
+    	std::cout << "Player 1's board\n" ;
     	player1_Board.printBoard();
     	std::cout << "\nEnemy's Board\n" ;
     	player1_eBoard.printBoard();
+			std::cout << "===============================================\n";
     }
 
 		if(playerName=="Player 2")
@@ -194,11 +201,12 @@ void Game::fire(std::string playerName)
 	    {
 	      player2_eBoard.updateBoard(col,row,hitChar);
 	    }
-
-			std::cout << "\nPlayer 2's board\n";
+			std::cout << "===============================================\n";
+			std::cout << "Player 2's board\n";
 	    player2_Board.printBoard();
-	    std::cout << "\nEnemy's Board\n" ;
+	    std::cout << "Enemy's Board\n" ;
 	    player2_eBoard.printBoard();
+			std::cout << "===============================================\n";
   	}
 }
 bool Game::player1Won()
@@ -207,11 +215,11 @@ bool Game::player1Won()
     {
         if(player1_ships[i]->is_sunk()==true)
             {
-                player1WonCheck = true;
+                player1WonCheck = false;
             }
             else
             {
-                player1WonCheck = false;
+                player1WonCheck = true;
             }
     }
     return player1WonCheck;
