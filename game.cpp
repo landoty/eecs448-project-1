@@ -197,10 +197,14 @@ void Game::fire(std::string playerName)
 	    	}
 			}
 
-			if(numShips==missCount)
+		if(numShips==missCount)
 	    {
 	      player2_eBoard.updateBoard(col,row,missChar);
 	    }
+		else if(numShips!=missCount)
+		{
+		  player2_eBoard.updateBoard(col,row,missChar);
+		}
 	    else
 	    {
 	      player2_eBoard.updateBoard(col,row,hitChar);
