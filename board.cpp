@@ -91,7 +91,7 @@ void Board::placeShip(Ship* entry)
 	{
 		direction = row;
 	}
-	if(direction+entry->get_size()-1 < 10)
+	if(direction+entry->get_size()-1 <= 10)
 	{
 		for (int i=0; i<entry->get_size(); i++)
 		{
