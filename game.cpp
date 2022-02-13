@@ -165,7 +165,11 @@ void Game::fire(std::string playerName)
     	{
       	player1_eBoard.updateBoard(col,row,missChar);
     	}
-    	else
+    	else if(numShips!=missCount)
+		{
+			player1_eBoard.updateBoard(col,row,missChar);
+		}
+		else 
     	{
       	player1_eBoard.updateBoard(col,row,hitChar);
     	}
