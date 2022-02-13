@@ -1,5 +1,5 @@
-ships: ship.o main.o game.o board.o Executive.o
-	g++ -std=c++11 -g -Wall ship.o main.o game.o board.o Executive.o -o ships
+Battleship: ship.o main.o game.o board.o Executive.o
+	g++ -std=c++11 -g -Wall ship.o main.o game.o board.o Executive.o -o Battleship
 main.o: main.cpp Executive.h
 	g++ -std=c++11 -g -Wall -c main.cpp
 Executive.o: Executive.cpp Executive.h
@@ -11,4 +11,4 @@ ship.o: ship.cpp ship.h
 game.o: game.cpp  game.h
 	g++ -std=c++11 -g -Wall -c game.cpp
 clean:
-	rm *.o ships
+	rm *.o Battleship
