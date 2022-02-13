@@ -26,7 +26,7 @@ void Game::shipPlacement()
 		std::cin >> numShips;
 		if(numShips >5 || numShips < 1)
 		{
-			std::cin.clear();
+			std::cin.clear();					//Prompts for input if user gives a non integer
 			std::cin.ignore();
 			std::cout << "Invalid number of ships. Try again.\n";
 			std::cin >> numShips;
@@ -34,7 +34,7 @@ void Game::shipPlacement()
 		std::cout << "===============================================\n";
 	}
 
-	player1_ships = new Ship*[numShips];
+	player1_ships = new Ship*[numShips];		//Ship arrays for player 1 and player 2
 	player2_ships = new Ship*[numShips];
 
 	for (int i=1; i<3; i++)
@@ -94,7 +94,7 @@ void Game::shipPlacement()
 
 					if(i==1)
 					{
-						player1_ships[j] = new Ship(j+1, direction, col, row);
+						player1_ships[j] = new Ship(j+1, direction, col, row);				//Based on user input, a new ship object is created and stored in their respective array
 						player1_Board.placeShip(player1_ships[j]);
 					}
 					if(i==2)
